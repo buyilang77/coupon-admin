@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { fetchList, updateOrder } from '@/api/merchant'
+import { fetchList } from '@/api/merchant'
 import waves from '@/directive/waves' // waves directive
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 import { regionData, CodeToText } from 'element-china-area-data'
@@ -106,36 +106,6 @@ export default {
     handleFilter() {
       this.listQuery.page = 1
       this.getList()
-    },
-    handleModifyStatus(row, status) {
-      this.$message({
-        message: '操作Success',
-        type: 'success'
-      })
-      row.status = status
-    },
-    handleUpdate(row) {
-      this.$nextTick(() => {
-        this.$refs['dataForm'].clearValidate()
-      })
-    },
-    updateData() {
-      this.$refs['dataForm'].validate((valid) => {
-        if (valid) {
-          const tempData = Object.assign({}, this.temp)
-          updateOrder(tempData.id, tempData).then(response => {
-            const index = this.list.findIndex(v => v.id === this.temp.id)
-            this.list.splice(index, 1, this.temp)
-            this.dialogFormVisible = false
-            this.$notify({
-              title: 'Success',
-              message: response.message,
-              type: 'success',
-              duration: 2000
-            })
-          })
-        }
-      })
     },
     formatRegion(region) {
       const item = region.map((item) => {
