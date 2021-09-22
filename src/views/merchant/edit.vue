@@ -86,7 +86,7 @@ export default {
               duration: 2000
             })
             this.loading = false
-            this.$router.push('/merchant-management/index')
+            this.$router.push('/merchant/index')
           })
         } else {
           console.log('error submit!!')

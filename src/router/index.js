@@ -53,7 +53,7 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/merchant-management/index',
+    redirect: '/merchant/index',
     hidden: true,
     children: [
       {
@@ -66,23 +66,23 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/merchant-management',
+    path: '/merchant',
     component: Layout,
-    redirect: '/merchant-management/index',
+    redirect: '/merchant/index',
     name: 'MerchantManagement',
     meta: { title: '商户管理', icon: 'list' },
     children: [
       {
         path: 'index',
-        component: () => import('@/views/merchant-management/index'),
+        component: () => import('@/views/merchant/index'),
         name: 'MerchantIndex',
         meta: { title: '商户列表', icon: 'list', noCache: true }
       },
       {
         path: 'edit/:id',
-        component: () => import('@/views/merchant-management/edit'),
+        component: () => import('@/views/merchant/edit'),
         name: 'MerchantEdit',
-        meta: { title: '编辑商户', activeMenu: '/merchant-management/index', noCache: true },
+        meta: { title: '编辑商户', activeMenu: '/merchant/index', noCache: true },
         hidden: true
       }
     ]
@@ -98,6 +98,57 @@ export const constantRoutes = [
         component: () => import('@/views/profile/index'),
         name: 'Profile',
         meta: { title: 'Profile', icon: 'user', noCache: true }
+      }
+    ]
+  },
+  {
+    path: '/products',
+    component: Layout,
+    redirect: '/products/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/products/index'),
+        name: 'Products',
+        meta: { title: '产品列表', icon: 'list' }
+      }
+    ]
+  },
+  {
+    path: '/activity',
+    component: Layout,
+    redirect: '/activity/index',
+    name: 'Activity',
+    meta: {
+      title: '活动管理',
+      icon: 'shopping'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/activity/index'),
+        name: 'ActivityIndex',
+        meta: { title: '活动列表', icon: 'list', noCache: true }
+      },
+      {
+        path: 'edit/:id(\\d+)',
+        component: () => import('@/views/activity/edit'),
+        name: 'ActivityEdit',
+        meta: { title: '编辑活动', activeMenu: '/activity/index' },
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/shop-users',
+    component: Layout,
+    redirect: '/shop-users/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/shop-users/index'),
+        name: 'ShopUsers',
+        meta: { title: '商店用户', icon: 'user' }
       }
     ]
   }

@@ -23,6 +23,13 @@ export function getInfo() {
   })
 }
 
+export function fetchShopUsers() {
+  return request({
+    url: '/shopUsers',
+    method: 'get'
+  })
+}
+
 export function logout() {
   return request({
     url: '/authorizations/current',
