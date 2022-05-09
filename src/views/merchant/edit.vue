@@ -29,6 +29,9 @@
         <el-form-item label="账号状态">
           <el-switch v-model="postForm.status" :active-value="1" :inactive-value="0" />
         </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input v-model="postForm.password" />
+        </el-form-item>
         <el-divider />
         <div class="text-center">
           <el-button v-loading="loading" style="margin-left: 10px;" @click="submitForm">提交</el-button>
@@ -47,6 +50,7 @@ const defaultForm = {
   merchant_name: null,
   surname: null,
   phone: null,
+  password: undefined,
   status: 0
 }
 
@@ -77,6 +81,9 @@ export default {
     submitForm() {
       this.$refs.postForm.validate(valid => {
         if (valid) {
+          if (this.postForm.password === '') {
+            this.postForm.password = undefined
+          }
           updateMerchant(this.postForm.id, this.postForm).then(response => {
             this.loading = true
             this.$notify({

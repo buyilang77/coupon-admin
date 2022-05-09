@@ -9,11 +9,6 @@
 
     <el-table :key="tableKey" :data="list" border fit highlight-current-row style="width: 100%;" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" />
-      <el-table-column label="商户名称" align="center">
-        <template slot-scope="{row}">
-          <span :title="row.merchant_name">{{ row.merchant_name }}</span>
-        </template>
-      </el-table-column>
       <el-table-column label="用户名" align="center" width="95">
         <template slot-scope="{row}">
           <span>{{ row.username }}</span>
@@ -27,6 +22,11 @@
       <el-table-column label="手机号" align="center" width="110">
         <template slot-scope="{row}">
           <span>{{ row.phone }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="商户名称" align="center">
+        <template slot-scope="{row}">
+          <span :title="row.merchant_name">{{ row.merchant_name }}</span>
         </template>
       </el-table-column>
       <el-table-column label="地址" align="center">
